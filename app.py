@@ -6,9 +6,26 @@ app = Flask(__name__)
 def main():
     return redirect('/index')
 
-@app.route('/index')
+@app.route('/index', methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    
+    if request.method == 'GET':
+        #return render_template('userinfo_lulu.html',num=nquestions)
+        return render_template('index.html')
+    else:
+        #request was a POST
+        #app_lulu.vars['name'] = request.form['name_lulu']
+        #app_lulu.vars['age'] = request.form['age_lulu']
+        
+        #f = open('%s_%s.txt'%(app_lulu.vars['name'],app_lulu.vars['age']),'w')
+        #f.write('Name: %s\n'%(app_lulu.vars['name']))
+        #f.write('Age: %s\n\n'%(app_lulu.vars['age']))
+        #f.close()
+        
+        return redirect('/displayData')
+    
+    
+
 
 @app.route('/displayData')
 def displayData():
