@@ -11,5 +11,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(port=33507)
+    app.run(host=104.131.16.114)
 
