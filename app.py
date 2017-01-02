@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def main():
     return redirect('/index')
 
@@ -22,14 +22,15 @@ def index():
         #f.write('Age: %s\n\n'%(app_lulu.vars['age']))
         #f.close()
         
-        return redirect('/displayData')
+        stockSelected = request.form['selectedStock']
+        return render_template('displayData.html', stock=stockSelected)
     
     
 
 
-@app.route('/displayData')
-def displayData():
-    return render_template('displayData.html')
+#@app.route('/displayData')
+#def displayData():
+#    return render_template('displayData.html')
 
 if __name__ == '__main__':
     app.run(port=33507)
