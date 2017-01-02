@@ -7,35 +7,38 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head>
-	<body>
+	<body class="body">
 		<div>
   			<h1 class="text-center text-uppercase">Stock Application </h1>
 		</div>
 		<div>
-		  <h2 class="text-center text-lowercase">Please select a Stock</h2>
+		  <h2 class="bg-info">Please select a Stock</h2>
 		</div>
 		<form method="post" action="index" id="stockForm">
-			<label>Enter your stock:</label>
-			<input type="text" name="selectedStock">
-			<p>
+			
+			 <div class="form-group">
+    			<label for="exampleInputEmail1">Type a ticker</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAPL" name="selectedStock">
+  </div>
+			
 		  	<label>
 		    	<input type="checkbox" name="TypeOfPrice_Open" value="1" id="TypeOfPrice_Open">
 		    	Open Price</label>
 		 	 <br>
 		  	<label>
-		    	<input type="checkbox" name="TypeOfPrice_Close" value="2" id="TypeOfPrice_Close">
+		    	<input type="checkbox" name="TypeOfPrice_Close" value="1" id="TypeOfPrice_Close">
 		    	Close Price</label>
 		  	<br>
 		  	<label>
-		    	<input type="checkbox" name="TypeOfPrice_" value="3" id="TypeOfPrice_AC">
+		    	<input type="checkbox" name="TypeOfPrice_AC" value="1" id="TypeOfPrice_AC">
 		    	Adjusted Close</label>
 		  	<br>
 		  	<label>
-		    	<input type="checkbox" name="TypeOfPrice_" value="4" id="TypeOfPrice_AO">
+		    	<input type="checkbox" name="TypeOfPrice_AO" value="1" id="TypeOfPrice_AO">
 		    	Adjusted Open</label>
 		  	<br>
-		  	<input type="submit">
-    		</p>
+		  	<input type="submit" class="btn btn-primary btn-lg">
+    		
     	</form>
 	</body>
 </html>
