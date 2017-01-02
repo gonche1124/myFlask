@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
+app.vars={}
 
 @app.route('/', methods=['GET','POST'])
 def main():
@@ -17,21 +18,31 @@ def index():
         #app_lulu.vars['name'] = request.form['name_lulu']
         #app_lulu.vars['age'] = request.form['age_lulu']
         
-        #f = open('%s_%s.txt'%(app_lulu.vars['name'],app_lulu.vars['age']),'w')
-        #f.write('Name: %s\n'%(app_lulu.vars['name']))
-        #f.write('Age: %s\n\n'%(app_lulu.vars['age']))
-        #f.close()
+
+
+        app.vars['selectedStock'] = request.form['selectedStock']
         
-        stockSelected = request.form['selectedStock']
-        return render_template('displayData.html', stock=stockSelected)
+        if request.form['TypeOfPrice_Open']==True:
+            print "Open is clicked"
+        if request.form['TypeOfPrice_Close'] == True:
+            print "Close is clicked"
+        #print request.form['TypeOfPrice_AO']
+        #print request.form['TypeOfPrice_AC']
+        
+        return redirect('/displayData')
+
     
     
 
 
-#@app.route('/displayData')
-#def displayData():
-#    return render_template('displayData.html')
+@app.route('/displayData', methods=['GET','POST'])
+def displayData():
+    
+    
+
+    
+    return render_template('displayData.html', stock=app.vars['selectedStock'], testWord='WOW')
 
 if __name__ == '__main__':
-    app.run(port=33507)
+    app.run(port=33507, debug=True)
 
