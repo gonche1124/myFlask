@@ -28,6 +28,19 @@ def index():
     else:
         #request was a POST
         app.vars['selectedStock'] = request.form['selectedStock']
+        totDias= request.form['daysOfStock']
+        if isinstance(totDias,int):
+            if totDias>100:
+                totDias=100
+            elif totDias<5:
+                totDias=100
+            else:
+                totDias=totDias
+        else:
+                totDias=totDias
+                        
+    
+        app.vars['daysOfStock'] = totDias
         
         
         #Checkboxes
@@ -35,7 +48,7 @@ def index():
         app.vars['TypeOfPrice_Close']=request.form.getlist('TypeOfPrice_Close')
         app.vars['TypeOfPrice_AC']=request.form.getlist('TypeOfPrice_AC')
         app.vars['TypeOfPrice_AO']=request.form.getlist('TypeOfPrice_AO')
-        
+        print str(app.vars)
         return redirect('/displayData')
 
 
@@ -46,6 +59,8 @@ def displayData():
     stock= app.vars['selectedStock']
     stock2download = "WIKI/%s" % stock
     data = quandl.get(stock2download)
+    totDias=app.vars['daysOfStock']
+    data=data.tail(int(totDias))
     companyName= get_symbol(stock)
     
     #Get Graph ready
